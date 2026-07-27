@@ -607,7 +607,6 @@
   const navToggle = document.getElementById("nav-toggle");
   const navList = document.getElementById("nav-list");
 
-  let hasInteracted = false;   // tracks whether suggestions should still show
   let hasGreeted = false;      // tracks whether the welcome message has been sent
 
   /* ---------------- Rendering helpers ---------------- */
@@ -649,20 +648,10 @@
     });
   }
 
-  function hideSuggestions(){
-    suggestionsEl.innerHTML = "";
-  }
-
   /* ---------------- Core conversation flow ---------------- */
   function handleUserMessage(text){
     const trimmed = text.trim();
     if (!trimmed) return;
-
-    // Suggestion chips disappear after the very first interaction
-    if (!hasInteracted){
-      hasInteracted = true;
-      hideSuggestions();
-    }
 
     addMessage(trimmed, "user");
     inputEl.value = "";
@@ -728,6 +717,13 @@
       navList.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     });
+  });
+
+  /* ---------------- Auto-open the chat shortly after arriving ---------------- */
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      if (chatWindow.hidden) openChat();
+    }, 1500);
   });
 
 })();
