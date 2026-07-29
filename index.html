@@ -5,32 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hobart College — Meet Elind</title>
 
-<!-- Fonts: Fraunces (collegiate display serif) + Inter (body) + IBM Plex Mono (small labels / Elind's "voice") -->
+<!-- Load fonts from Google -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-  /* ============================================================
-     DESIGN TOKENS
-     Palette: deep campus navy + a clear working blue + a paper-
-     white base. The serif display face nods to the "College" in
-     the brand; the mono face is reserved for Elind's own voice
-     (labels, the wordmark, timestamps) so the assistant reads as
-     a distinct, slightly more technical layer sitting on top of
-     the traditional college identity.
-     ============================================================ */
+  /* Colors, fonts and spacing used everywhere */
   :root{
-    --navy: #0B2A4A;         /* primary text / header ink */
-    --blue-700: #14508C;     /* primary brand blue */
-    --blue-600: #1E6FD9;     /* CTA / interactive blue */
-    --blue-400: #5C9FEF;     /* lighter accent / hover */
-    --blue-100: #E9F2FD;     /* tint backgrounds */
-    --blue-50:  #F5F9FE;     /* page background */
+    --navy: #0B2A4A;
+    --blue-700: #14508C;
+    --blue-600: #1E6FD9;
+    --blue-400: #5C9FEF;
+    --blue-100: #E9F2FD;
+    --blue-50:  #F5F9FE;
     --white: #FFFFFF;
-    --ink: #1C2B3A;          /* body copy */
-    --ink-soft: #52667A;     /* secondary copy */
-    --line: #D9E6F5;         /* hairline borders */
+    --ink: #1C2B3A;
+    --ink-soft: #52667A;
+    --line: #D9E6F5;
     --success: #2FAE73;
 
     --font-display: 'Fraunces', Georgia, serif;
@@ -44,10 +36,6 @@
     --shadow-tight: 0 8px 24px -12px rgba(11,42,74,0.35);
   }
 
-  @media (prefers-reduced-motion: reduce){
-    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
-  }
-
   *{ box-sizing: border-box; }
   html{ scroll-behavior: smooth; }
   body{
@@ -56,12 +44,10 @@
     color: var(--ink);
     background: var(--blue-50);
     line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
   }
   img, svg{ display:block; max-width:100%; }
   a{ color: inherit; }
   .container{ width:100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-  :focus-visible{ outline: 3px solid var(--blue-400); outline-offset: 2px; border-radius: 4px; }
 
   .eyebrow{
     font-family: var(--font-mono);
@@ -73,9 +59,7 @@
     margin: 0 0 14px;
   }
 
-  /* ============================================================
-     HEADER
-     ============================================================ */
+  /* Top header bar styles */
   .site-header{
     position: sticky; top: 0; z-index: 40;
     background: rgba(255,255,255,0.9);
@@ -94,14 +78,14 @@
     display:flex; align-items:center; justify-content:center; font-size:1.05rem;
     box-shadow: var(--shadow-tight);
   }
-  .logo-text{ font-weight:700; color: var(--navy); font-size:1.05rem; letter-spacing:-0.01em; }
+  .logo-text{ font-weight:700; color: var(--navy); font-size:1.05rem; }
 
   .nav-toggle{
     display:none; background:none; border:1px solid var(--line); border-radius: 8px;
     width:42px; height:38px; cursor:pointer; align-items:center; justify-content:center;
   }
   .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
-    content:''; display:block; width:20px; height:2px; background: var(--navy); position:relative; transition: transform .2s ease, opacity .2s ease;
+    content:''; display:block; width:20px; height:2px; background: var(--navy); position:relative;
   }
   .nav-toggle span::before{ position:absolute; top:-6px; }
   .nav-toggle span::after{ position:absolute; top:6px; }
@@ -111,42 +95,31 @@
   }
   .nav-list a{
     text-decoration:none; font-weight:500; font-size:0.94rem; color: var(--ink);
-    padding: 6px 2px; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease;
+    padding: 6px 2px; border-bottom: 2px solid transparent;
   }
   .nav-list a:hover{ color: var(--blue-700); border-color: var(--blue-400); }
 
-  /* ============================================================
-     BUTTONS
-     ============================================================ */
+  /* Button styles used in hero */
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
     font-family: var(--font-body); font-weight:600; font-size:0.95rem;
     padding: 13px 26px; border-radius: 999px; border:1px solid transparent;
-    cursor:pointer; text-decoration:none; transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    cursor:pointer; text-decoration:none;
   }
-  .btn:hover{ transform: translateY(-1px); }
   .btn-primary{ background: var(--blue-600); color:#fff; box-shadow: var(--shadow-tight); }
   .btn-primary:hover{ background: var(--blue-700); }
   .btn-secondary{ background: transparent; color: var(--navy); border-color: var(--line); }
   .btn-secondary:hover{ background: var(--blue-100); }
 
-  /* ============================================================
-     HERO
-     ============================================================ */
-  .hero{ padding: 88px 0 96px; overflow:hidden; position:relative; }
-  .hero::before{
-    content:''; position:absolute; inset: -20% -10% auto; height: 620px;
-    background: radial-gradient(60% 60% at 30% 20%, rgba(30,111,217,0.14), transparent 70%);
-    z-index:0; pointer-events:none;
-  }
+  /* Hero banner at top of page */
+  .hero{ padding: 88px 0 96px; }
   .hero-grid{
-    position:relative; z-index:1;
     display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items:center;
   }
   .hero-copy h1.display{
     font-family: var(--font-display);
     font-size: clamp(2.8rem, 5.4vw, 4.2rem);
-    line-height: 1.02; font-weight: 600; letter-spacing: -0.01em;
+    line-height: 1.02; font-weight: 600;
     color: var(--navy); margin: 0 0 18px;
   }
   .hero-copy .subtitle{
@@ -157,37 +130,30 @@
   }
   .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
 
-  /* Signature hero element: a live-look preview of an Elind
-     exchange, so the hero shows the actual product rather than
-     an abstract graphic. */
-  .hero-visual{ position:relative; }
+  /* Small chat preview card in hero */
   .chat-preview-card{
     background: var(--white); border-radius: var(--radius-lg);
     border: 1px solid var(--line); box-shadow: var(--shadow-soft);
     padding: 22px; max-width: 400px; margin-left:auto;
-    transform: rotate(1.2deg);
   }
   .preview-header{
     display:flex; align-items:center; gap:8px; font-family: var(--font-mono);
     font-size: 0.78rem; font-weight:600; color: var(--ink-soft); margin-bottom:16px;
-    text-transform: uppercase; letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
-  .preview-dot{ width:8px; height:8px; border-radius:50%; background: var(--success); box-shadow: 0 0 0 3px rgba(47,174,115,0.18); }
+  .preview-dot{ width:8px; height:8px; border-radius:50%; background: var(--success); }
   .preview-bubble{
     font-size:0.92rem; padding: 12px 15px; border-radius: 14px; margin-bottom:10px; max-width: 84%;
-    line-height:1.4;
   }
-  .preview-bubble.bot{ background: var(--blue-100); color: var(--navy); border-bottom-left-radius:4px; }
-  .preview-bubble.user{ background: var(--navy); color:#fff; margin-left:auto; border-bottom-right-radius:4px; }
+  .preview-bubble.bot{ background: var(--blue-100); color: var(--navy); }
+  .preview-bubble.user{ background: var(--navy); color:#fff; margin-left:auto; }
 
-  /* ============================================================
-     FEATURES
-     ============================================================ */
+  /* Feature cards grid section */
   .features{ padding: 20px 0 100px; }
   .section-head{ max-width: 620px; margin: 0 0 44px; }
   .section-head h2{
     font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.3rem);
-    color: var(--navy); margin: 0 0 12px; font-weight:600; letter-spacing:-0.01em;
+    color: var(--navy); margin: 0 0 12px; font-weight:600;
   }
   .section-head p{ color: var(--ink-soft); margin:0; font-size:1.02rem; }
 
@@ -196,24 +162,22 @@
   }
   .feature-card{
     background: var(--white); border:1px solid var(--line); border-radius: var(--radius-lg);
-    padding: 28px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    padding: 28px;
   }
-  .feature-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-soft); border-color: var(--blue-400); }
+  .feature-card:hover{ box-shadow: var(--shadow-soft); border-color: var(--blue-400); }
   .feature-icon{
     width:46px; height:46px; border-radius: 12px; background: var(--blue-100);
     display:flex; align-items:center; justify-content:center; margin-bottom:18px;
     color: var(--blue-700);
   }
   .feature-tag{
-    font-family: var(--font-mono); font-size:0.68rem; font-weight:600; letter-spacing:0.1em;
+    font-family: var(--font-mono); font-size:0.68rem; font-weight:600;
     text-transform:uppercase; color: var(--blue-400); margin: 0 0 8px;
   }
   .feature-card h3{ margin: 0 0 8px; font-size:1.12rem; color: var(--navy); }
   .feature-card p{ margin:0; color: var(--ink-soft); font-size:0.96rem; }
 
-  /* ============================================================
-     FOOTER
-     ============================================================ */
+  /* Bottom footer bar */
   .site-footer{
     background: var(--navy); color: rgba(255,255,255,0.85); padding: 40px 0;
   }
@@ -222,11 +186,9 @@
   }
   .footer-brand{ font-family: var(--font-display); font-weight:600; font-size:1.1rem; color:#fff; margin:0; }
   .footer-meta, .footer-copy{ margin:0; font-size:0.86rem; color: rgba(255,255,255,0.6); }
-  .footer-meta{ font-family: var(--font-mono); letter-spacing:0.03em; }
+  .footer-meta{ font-family: var(--font-mono); }
 
-  /* ============================================================
-     CHAT LAUNCHER (floating action button)
-     ============================================================ */
+  /* Floating round chat button */
   .chat-launcher{
     position: fixed; right: 24px; bottom: 24px; z-index: 60;
     width: 62px; height: 62px; border-radius: 50%;
@@ -245,9 +207,7 @@
   }
   .chat-launcher.hidden{ display:none; }
 
-  /* ============================================================
-     CHAT WINDOW
-     ============================================================ */
+  /* Chat window box */
   .chat-window{
     position: fixed; right: 24px; bottom: 24px; z-index: 61;
     width: 380px; max-width: calc(100vw - 32px);
@@ -255,12 +215,6 @@
     background: var(--white); border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft); border: 1px solid var(--line);
     display:flex; flex-direction:column; overflow:hidden;
-    transform-origin: bottom right;
-    animation: chat-in .22s ease;
-  }
-  @keyframes chat-in{
-    from{ opacity:0; transform: scale(0.92) translateY(12px); }
-    to{ opacity:1; transform: scale(1) translateY(0); }
   }
   .chat-window[hidden]{ display:none; }
 
@@ -290,17 +244,15 @@
   .chat-messages{
     flex:1; overflow-y:auto; padding: 18px; display:flex; flex-direction:column; gap:12px;
     background: var(--blue-50);
-    scroll-behavior: smooth;
   }
   .msg{
     max-width: 82%; padding: 11px 14px; border-radius: 16px; font-size:0.92rem; line-height:1.45;
-    white-space: pre-line; animation: msg-in .18s ease;
+    white-space: pre-line;
   }
-  @keyframes msg-in{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform: translateY(0);} }
-  .msg.bot{ align-self:flex-start; background:#fff; border:1px solid var(--line); color: var(--ink); border-bottom-left-radius:4px; }
-  .msg.user{ align-self:flex-end; background: var(--blue-600); color:#fff; border-bottom-right-radius:4px; }
+  .msg.bot{ align-self:flex-start; background:#fff; border:1px solid var(--line); color: var(--ink); }
+  .msg.user{ align-self:flex-end; background: var(--blue-600); color:#fff; }
 
-  .msg.typing{ align-self:flex-start; display:flex; align-items:center; gap:6px; color: var(--ink-soft); font-style: normal; }
+  .msg.typing{ align-self:flex-start; display:flex; align-items:center; gap:6px; color: var(--ink-soft); }
   .typing-dots{ display:inline-flex; gap:3px; }
   .typing-dots span{
     width:6px; height:6px; border-radius:50%; background: var(--blue-400);
@@ -316,9 +268,9 @@
   .chip{
     font-family: var(--font-body); font-size:0.82rem; font-weight:500; color: var(--blue-700);
     background: var(--blue-100); border: 1px solid var(--blue-400); border-radius: 999px;
-    padding: 7px 13px; cursor:pointer; transition: background .15s ease, transform .15s ease;
+    padding: 7px 13px; cursor:pointer;
   }
-  .chip:hover{ background: var(--blue-400); color:#fff; transform: translateY(-1px); }
+  .chip:hover{ background: var(--blue-400); color:#fff; }
 
   .chat-input-row{
     display:flex; gap:10px; padding: 14px; border-top: 1px solid var(--line); background:#fff; flex-shrink:0;
@@ -330,17 +282,15 @@
   .chat-input-row input:focus{ outline:none; border-color: var(--blue-400); background:#fff; }
   .chat-input-row button{
     background: var(--blue-600); color:#fff; border:none; border-radius:999px; padding: 0 20px;
-    font-weight:600; font-size:0.9rem; cursor:pointer; transition: background .15s ease;
+    font-weight:600; font-size:0.9rem; cursor:pointer;
   }
   .chat-input-row button:hover{ background: var(--blue-700); }
 
-  /* ============================================================
-     RESPONSIVE
-     ============================================================ */
+  /* Screen size adjustments below */
   @media (max-width: 880px){
     .hero-grid{ grid-template-columns: 1fr; }
     .hero-visual{ order:-1; max-width: 420px; margin: 0 auto; }
-    .chat-preview-card{ margin: 0 auto; transform: rotate(0.6deg); }
+    .chat-preview-card{ margin: 0 auto; }
     .feature-grid{ grid-template-columns: 1fr; }
   }
 
@@ -348,7 +298,7 @@
     .nav-toggle{ display:flex; }
     .nav-list{
       position:absolute; top: 76px; left:0; right:0; background:#fff; border-bottom:1px solid var(--line);
-      flex-direction:column; gap:0; max-height:0; overflow:hidden; transition: max-height .2s ease;
+      flex-direction:column; gap:0; max-height:0; overflow:hidden;
     }
     .nav-list.open{ max-height: 260px; }
     .nav-list li{ width:100%; }
@@ -363,9 +313,7 @@
 </head>
 <body>
 
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
+<!-- Header with logo and menu -->
 <header class="site-header">
   <div class="container header-inner">
     <a class="logo" href="#home">
@@ -373,7 +321,7 @@
       <span class="logo-text">Hobart College</span>
     </a>
     <nav aria-label="Primary">
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
         <span></span>
       </button>
       <ul class="nav-list" id="nav-list">
@@ -386,9 +334,7 @@
   </div>
 </header>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
+<!-- Hero banner with intro text -->
 <section class="hero" id="home">
   <div class="container hero-grid">
     <div class="hero-copy">
@@ -402,7 +348,7 @@
       </div>
     </div>
 
-    <!-- Signature hero element: a live preview of an actual Elind exchange -->
+    <!-- Sample chat preview -->
     <div class="hero-visual" aria-hidden="true">
       <div class="chat-preview-card">
         <div class="preview-header"><span class="preview-dot"></span> Elind · Online</div>
@@ -414,9 +360,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     FEATURE CARDS
-     ============================================================ -->
+<!-- Four feature cards -->
 <section class="features" id="features">
   <div class="container">
     <div class="section-head" id="courses">
@@ -466,9 +410,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- Bottom footer -->
 <footer class="site-footer" id="contact">
   <div class="container footer-inner">
     <p class="footer-brand">Hobart College (Demo)</p>
@@ -477,16 +419,12 @@
   </div>
 </footer>
 
-<!-- ============================================================
-     CHAT LAUNCHER
-     ============================================================ -->
-<button class="chat-launcher" id="chat-launcher" aria-label="Open Elind chat assistant" aria-haspopup="dialog">
+<!-- Floating chat button -->
+<button class="chat-launcher" id="chat-launcher" aria-label="Open Elind chat assistant">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.2-4.2A8 8 0 1 1 21 12Z"/></svg>
 </button>
 
-<!-- ============================================================
-     CHAT WINDOW
-     ============================================================ -->
+<!-- Chat window box -->
 <div class="chat-window" id="chat-window" role="dialog" aria-label="Elind chat assistant" hidden>
   <div class="chat-header">
     <div class="chat-header-info">
@@ -509,224 +447,179 @@
 </div>
 
 <script>
-/* ==================================================================
-   ELIND — frontend-only prototype chatbot
-   No external AI model is used. All answers come from a fixed
-   JSON-style lookup table below, matched against keywords.
-   ================================================================== */
+// Elind chatbot logic, no AI used
 
-(function(){
-  "use strict";
+const launcher = document.getElementById("chat-launcher");
+const chatWindow = document.getElementById("chat-window");
+const closeBtn = document.getElementById("chat-close");
+const messagesEl = document.getElementById("chat-messages");
+const suggestionsEl = document.getElementById("chat-suggestions");
+const inputEl = document.getElementById("chat-input");
+const sendBtn = document.getElementById("chat-send");
+const tryElindBtn = document.getElementById("try-elind-btn");
+const navToggle = document.getElementById("nav-toggle");
+const navList = document.getElementById("nav-list");
 
-  /* ---------------- Predefined knowledge base ----------------
-     Each entry has a set of keyword patterns (matched as whole
-     words, case-insensitive) and a fixed answer. Order matters:
-     more specific entries are checked first so a message like
-     "Reset my DECYP password" doesn't get swallowed by a more
-     general rule. */
-  const KNOWLEDGE_BASE = [
-    {
-      id: "password",
-      keywords: ["password", "reset password", "decyp password", "forgot password"],
-      answer: "If you've forgotten your DECYP password, please follow the official DECYP password reset instructions or contact Student Services."
-    },
-    {
-      id: "tce",
-      keywords: ["tce", "tasmanian certificate"],
-      answer: "The Tasmanian Certificate of Education (TCE) is awarded to students who successfully complete the required learning and literacy, numeracy and participation standards."
-    },
-    {
-      id: "atar",
-      keywords: ["atar"],
-      answer: "The Australian Tertiary Admission Rank (ATAR) is a ranking used by universities to help with course admissions."
-    },
-    {
-      id: "vet",
-      keywords: ["vet", "vocational"],
-      answer: "Vocational Education and Training (VET) allows students to gain practical workplace skills and nationally recognised qualifications while studying."
-    },
-    {
-      id: "utas",
-      keywords: ["utas", "pathway", "pathways", "university"],
-      answer: "Hobart College offers pathways that can prepare students for university study, including entry into UTAS courses."
-    },
-    {
-      id: "enrol",
-      keywords: ["enrol", "enroll", "enrolment", "enrollment", "sign up", "register"],
-      answer: "Hobart College has different enrolment processes for DECYP and non-DECYP students. Visit the official Hobart College enrolment page for detailed instructions."
-    },
-    {
-      id: "courses",
-      keywords: ["course", "courses", "subject", "subjects"],
-      answer: "Hobart College offers a wide range of academic, vocational and pathway courses. Please refer to the Hobart College Course Guide for the latest course list."
-    },
-    {
-      id: "services",
-      keywords: ["student services", "wellbeing", "onedrive", "support", "services"],
-      answer: "Student Services can assist with enrolment, attendance, wellbeing, student support and general enquiries."
-    }
-  ];
+let hasGreeted = false;
 
-  const FALLBACK_ANSWER = "I'm sorry, I don't have information about that yet.\n\nPlease contact Hobart College Student Services or visit the official Hobart College website for further assistance.";
+// List of suggested questions
+const suggestions = [
+  "How do I enrol?",
+  "What is TCE?",
+  "What is ATAR?",
+  "What is VET?",
+  "What courses are available?",
+  "Reset my DECYP password",
+  "Student Services",
+  "UTAS pathways"
+];
 
-  const WELCOME_MESSAGE = "👋 Hi! I'm Elind, Hobart College's virtual assistant.\n\nI can help with:\n• Courses\n• Enrolment\n• TCE\n• ATAR\n• VET\n• Student Services\n\nChoose one of the suggested questions below or type your own.";
+// First message shown to user
+const welcomeMessage = "👋 Hi! I'm Elind, Hobart College's virtual assistant.\n\nI can help with:\n• Courses\n• Enrolment\n• TCE\n• ATAR\n• VET\n• Student Services\n\nChoose one of the suggested questions below or type your own.";
 
-  const SUGGESTIONS = [
-    "How do I enrol?",
-    "What is TCE?",
-    "What is ATAR?",
-    "What is VET?",
-    "What courses are available?",
-    "Reset my DECYP password",
-    "Student Services",
-    "UTAS pathways"
-  ];
+// Reply used when nothing matches
+const fallbackAnswer = "I'm sorry, I don't have information about that yet.\n\nPlease contact Hobart College Student Services or visit the official Hobart College website for further assistance.";
 
-  /* ---------------- Matching logic ---------------- */
-  function findAnswer(userText){
-    const text = userText.toLowerCase().trim();
-    for (const entry of KNOWLEDGE_BASE){
-      for (const kw of entry.keywords){
-        // whole-word / phrase match, so "vet" doesn't fire on unrelated words
-        const pattern = new RegExp("\\b" + kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "i");
-        if (pattern.test(text)) return entry.answer;
-      }
-    }
-    return FALLBACK_ANSWER;
+// Match keywords to a fixed answer
+function getAnswer(text) {
+  const msg = text.toLowerCase();
+
+  if (msg.includes("password")) {
+    return "If you've forgotten your DECYP password, please follow the official DECYP password reset instructions or contact Student Services.";
+  }
+  if (msg.includes("tce")) {
+    return "The Tasmanian Certificate of Education (TCE) is awarded to students who successfully complete the required learning and literacy, numeracy and participation standards.";
+  }
+  if (msg.includes("atar")) {
+    return "The Australian Tertiary Admission Rank (ATAR) is a ranking used by universities to help with course admissions.";
+  }
+  if (msg.includes("vet") || msg.includes("vocational")) {
+    return "Vocational Education and Training (VET) allows students to gain practical workplace skills and nationally recognised qualifications while studying.";
+  }
+  if (msg.includes("utas") || msg.includes("pathway")) {
+    return "Hobart College offers pathways that can prepare students for university study, including entry into UTAS courses.";
+  }
+  if (msg.includes("enrol") || msg.includes("register") || msg.includes("sign up")) {
+    return "Hobart College has different enrolment processes for DECYP and non-DECYP students. Visit the official Hobart College enrolment page for detailed instructions.";
+  }
+  if (msg.includes("course") || msg.includes("subject")) {
+    return "Hobart College offers a wide range of academic, vocational and pathway courses. Please refer to the Hobart College Course Guide for the latest course list.";
+  }
+  if (msg.includes("service") || msg.includes("wellbeing") || msg.includes("onedrive")) {
+    return "Student Services can assist with enrolment, attendance, wellbeing, student support and general enquiries.";
   }
 
-  /* ---------------- DOM references ---------------- */
-  const launcher = document.getElementById("chat-launcher");
-  const chatWindow = document.getElementById("chat-window");
-  const closeBtn = document.getElementById("chat-close");
-  const messagesEl = document.getElementById("chat-messages");
-  const suggestionsEl = document.getElementById("chat-suggestions");
-  const inputEl = document.getElementById("chat-input");
-  const sendBtn = document.getElementById("chat-send");
-  const tryElindBtn = document.getElementById("try-elind-btn");
-  const navToggle = document.getElementById("nav-toggle");
-  const navList = document.getElementById("nav-list");
+  return fallbackAnswer;
+}
 
-  let hasGreeted = false;      // tracks whether the welcome message has been sent
+// Add one chat bubble to the screen
+function addMessage(text, sender) {
+  const bubble = document.createElement("div");
+  bubble.className = "msg " + sender;
+  bubble.textContent = text;
+  messagesEl.appendChild(bubble);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
 
-  /* ---------------- Rendering helpers ---------------- */
-  function addMessage(text, sender){
-    const bubble = document.createElement("div");
-    bubble.className = "msg " + sender;
-    bubble.textContent = text;
-    messagesEl.appendChild(bubble);
-    scrollToBottom();
-  }
+// Show the typing dots bubble
+function showTyping() {
+  const typing = document.createElement("div");
+  typing.className = "msg typing";
+  typing.id = "typing-indicator";
+  typing.innerHTML = 'Elind is typing <span class="typing-dots"><span></span><span></span><span></span></span>';
+  messagesEl.appendChild(typing);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
 
-  function scrollToBottom(){
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
+// Remove the typing dots bubble
+function hideTyping() {
+  const typing = document.getElementById("typing-indicator");
+  if (typing) typing.remove();
+}
 
-  function showTypingIndicator(){
-    const typing = document.createElement("div");
-    typing.className = "msg typing";
-    typing.id = "typing-indicator";
-    typing.innerHTML = 'Elind is typing <span class="typing-dots"><span></span><span></span><span></span></span>';
-    messagesEl.appendChild(typing);
-    scrollToBottom();
-  }
-
-  function removeTypingIndicator(){
-    const typing = document.getElementById("typing-indicator");
-    if (typing) typing.remove();
-  }
-
-  function renderSuggestions(){
-    suggestionsEl.innerHTML = "";
-    SUGGESTIONS.forEach(text => {
-      const chip = document.createElement("button");
-      chip.className = "chip";
-      chip.type = "button";
-      chip.textContent = text;
-      chip.addEventListener("click", () => handleUserMessage(text));
-      suggestionsEl.appendChild(chip);
+// Build the clickable suggestion chips
+function showSuggestions() {
+  suggestionsEl.innerHTML = "";
+  suggestions.forEach(function (text) {
+    const chip = document.createElement("button");
+    chip.className = "chip";
+    chip.type = "button";
+    chip.textContent = text;
+    chip.addEventListener("click", function () {
+      sendMessage(text);
     });
-  }
-
-  /* ---------------- Core conversation flow ---------------- */
-  function handleUserMessage(text){
-    const trimmed = text.trim();
-    if (!trimmed) return;
-
-    addMessage(trimmed, "user");
-    inputEl.value = "";
-
-    showTypingIndicator();
-    setTimeout(() => {
-      removeTypingIndicator();
-      const answer = findAnswer(trimmed);
-      addMessage(answer, "bot");
-    }, 1000); // 1-second typing animation, as specified
-  }
-
-  function greetIfNeeded(){
-    if (hasGreeted) return;
-    hasGreeted = true;
-    addMessage(WELCOME_MESSAGE, "bot");
-    renderSuggestions();
-  }
-
-  /* ---------------- Open / close chat window ---------------- */
-  function openChat(){
-    chatWindow.hidden = false;
-    launcher.classList.add("hidden");
-    greetIfNeeded();
-    inputEl.focus();
-  }
-
-  function closeChat(){
-    chatWindow.hidden = true;
-    launcher.classList.remove("hidden");
-    launcher.focus();
-  }
-
-  launcher.addEventListener("click", openChat);
-  closeBtn.addEventListener("click", closeChat);
-  tryElindBtn.addEventListener("click", openChat);
-
-  sendBtn.addEventListener("click", () => handleUserMessage(inputEl.value));
-  inputEl.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") handleUserMessage(inputEl.value);
+    suggestionsEl.appendChild(chip);
   });
+}
 
-  /* ---------------- Idle bounce animation on the launcher ---------------- */
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduceMotion){
-    setInterval(() => {
-      if (chatWindow.hidden){
-        launcher.classList.remove("bounce");
-        // restart animation reliably
-        void launcher.offsetWidth;
-        launcher.classList.add("bounce");
-      }
-    }, 4000);
+// Send a message and get a reply
+function sendMessage(text) {
+  const trimmed = text.trim();
+  if (!trimmed) return;
+
+  addMessage(trimmed, "user");
+  inputEl.value = "";
+
+  showTyping();
+  setTimeout(function () {
+    hideTyping();
+    addMessage(getAnswer(trimmed), "bot");
+  }, 1000);
+}
+
+// Show welcome message one time only
+function greet() {
+  if (hasGreeted) return;
+  hasGreeted = true;
+  addMessage(welcomeMessage, "bot");
+  showSuggestions();
+}
+
+// Open the chat window
+function openChat() {
+  chatWindow.hidden = false;
+  launcher.classList.add("hidden");
+  greet();
+  inputEl.focus();
+}
+
+// Close the chat window
+function closeChat() {
+  chatWindow.hidden = true;
+  launcher.classList.remove("hidden");
+}
+
+launcher.addEventListener("click", openChat);
+closeBtn.addEventListener("click", closeChat);
+tryElindBtn.addEventListener("click", openChat);
+
+sendBtn.addEventListener("click", function () {
+  sendMessage(inputEl.value);
+});
+inputEl.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") sendMessage(inputEl.value);
+});
+
+// Bounce the icon every few seconds
+setInterval(function () {
+  if (chatWindow.hidden) {
+    launcher.classList.remove("bounce");
+    void launcher.offsetWidth;
+    launcher.classList.add("bounce");
   }
+}, 4000);
 
-  /* ---------------- Mobile nav toggle ---------------- */
-  navToggle.addEventListener("click", () => {
-    const isOpen = navList.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-  navList.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      navList.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
-  });
+// Open and close the mobile menu
+navToggle.addEventListener("click", function () {
+  navList.classList.toggle("open");
+});
 
-  /* ---------------- Auto-open the chat shortly after arriving ---------------- */
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      if (chatWindow.hidden) openChat();
-    }, 1500);
-  });
-
-})();
+// Open chat a moment after page loads
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    if (chatWindow.hidden) openChat();
+  }, 1500);
+});
 </script>
 
 </body>
